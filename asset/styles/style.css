@@ -1,0 +1,295 @@
+* {
+    margin: 0%;
+    padding: 0%;
+}
+
+/* Grid pour séparer les différentes zones du site */
+body {
+    background-color: #ecf0f1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+    grid-template-rows: auto 2fr auto;
+    grid-template-areas:
+        "header header"
+        "sidebar section"
+        "footer footer"
+    ;
+}
+
+header,
+footer {
+    padding: 1% 0%;
+    width: 100%;
+    background-color: #34495e;
+}
+
+/* Grid pour placer les éléments du header et on donne comme nom header pour le grid du body */
+header {
+    display: grid;
+    grid-area: header;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "logo nav connect";
+    justify-items: center;
+    align-items: center;
+}
+
+/* Centre le logo et on le nomme pour le grid du header */
+.header-logo {
+    width: 100%;
+    height: 100%;
+    grid-area: logo;
+    text-align: center;
+}
+
+/* Centre la navbar et donne un nom pour le grid du header */
+.header-nav-links {
+    grid-area: nav;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* On fait un flex pour les éléments de la navbar pour les aligner */
+.header-nav-links ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header-nav-links li {
+    list-style: none;
+}
+
+.header-nav-links a {
+    text-decoration: none;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.header-nav-links a:hover {
+    text-shadow: -1px -1px 7px #ecf0f1;
+}
+
+/* donne un nom pour le grid du header de la navbar du pannier et la connection */
+.header-nav-shopping-cart {
+    width: 100%;
+    height: 100%;
+    grid-area: connect;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header-nav-shopping-cart a {
+    text-decoration: none;
+    color: black;
+}
+
+aside {
+    width: 100%;
+    height: 100vh;
+    grid-area: sidebar;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+aside h2 {
+    margin: 40% 0%;
+}
+
+aside li {
+    border: 1px solid black;
+    list-style: none;
+    padding: 10px;
+}
+
+aside a {
+    text-decoration: none;
+
+}
+
+.sidebar-home {
+    margin-bottom: 40%;
+}
+
+.categorie {
+    margin-bottom: 15%;
+}
+
+
+
+
+section {
+
+    background-color: rebeccapurple;
+    width: 100%;
+    height: 100vh;
+
+    grid-area: section;
+}
+
+/* donne le nom pour le body et on display grid pour arranger les éléments a l'interieur */
+footer {
+    grid-area: footer;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 8fr 1fr;
+    grid-template-areas:
+        "footer-address footer-nav-links footer-nav-help footer-news-letter"
+        "footer-end footer-end footer-end footer-end";
+}
+
+/* Nommage du logo et de l'adresse et décoration */
+.footer-address {
+    grid-area: footer-address;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.footer-address h3 {
+    color: #ecf0f1;
+    font-size: 2.5rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.footer-address address {
+    color: #bdc3c7;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Nommage de la navbar de liens dans le footer et décoration */
+.footer-nav-links {
+    grid-area: footer-nav-links;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.footer-nav-links ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.footer-nav-links li:before {
+    color: #bdc3c7;
+    content: '- ';
+}
+
+.footer-nav-links li {
+    margin: 4% 0%;
+}
+
+.footer-nav-links a {
+    color: #bdc3c7;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: none;
+}
+
+.footer-nav-links a:hover {
+    text-shadow: -1px -1px 7px #ecf0f1;
+}
+
+/* nommage de la navbar d'aide dans le footer et décoration */
+.footer-nav-help {
+    grid-area: footer-nav-help;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.footer-nav-help ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+.footer-nav-help li:before {
+    color: #bdc3c7;
+    content: '- ';
+}
+
+.footer-nav-help li {
+    margin: 4% 0%;
+}
+
+.footer-nav-help a {
+    color: #bdc3c7;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: none;
+}
+
+.footer-nav-help a:hover {
+    text-shadow: -1px -1px 7px #ecf0f1;
+}
+
+/* Nommage de la newsletter du footer et décoration */
+.footer-news-letter {
+    grid-area: footer-news-letter;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.footer-input-mail {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #bdc3c7;
+}
+
+.footer-input-mail:focus {
+    padding: 0 3%;
+    outline: none;
+    color: #ecf0f1;
+    border: none;
+    border-bottom: 1px solid #bdc3c7;
+}
+
+.footer-input-submit {
+    margin-left: 2%;
+    padding: 1px 5px;
+    color: #bdc3c7;
+    border-radius: 5px;
+    background-color: #3498db;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: none;
+    border-right: 3px solid #206999;
+    border-bottom: 4px solid #206999;
+    cursor: pointer;
+}
+
+.footer-input-submit:hover {
+    box-shadow: -1px -1px 2px 0px #bdc3c7;
+
+}
+
+.footer-input-submit:active {
+    border-color: transparent;
+}
+
+.nav-title {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #ecf0f1;
+}
+
+
+/* Les copyrights qui sont en toute fn de page */
+.footer-end {
+    margin: 1%;
+    border-top: 1px solid black;
+    grid-area: footer-end;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #ecf0f1;
+}
