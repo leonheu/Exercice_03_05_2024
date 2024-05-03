@@ -21,7 +21,8 @@ header,
 footer {
     padding: 1% 0%;
     width: 100%;
-    background-color: #34495e;
+    background: rgba(44, 62, 80, 1);
+    background: linear-gradient(90deg, rgba(44, 62, 80, 1) 0%, rgba(44, 100, 135, 1) 100%);
 }
 
 /* Grid pour placer les éléments du header et on donne comme nom header pour le grid du body */
@@ -76,6 +77,7 @@ header {
 
 .header-nav-links a:hover {
     text-shadow: -1px -1px 7px #ecf0f1;
+    color: black;
 }
 
 /* donne un nom pour le grid du header de la navbar du pannier et la connection */
@@ -93,14 +95,15 @@ header {
     color: black;
 }
 
+/* décoration de la side barre avec un display flex pour la media queries plus tard */
 aside {
-    width: 100%;
-    height: 100vh;
     grid-area: sidebar;
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    background: rgb(22, 160, 133);
+    background: linear-gradient(180deg, rgb(144, 185, 209) 0%, rgba(22, 55, 160, 1) 100%);
+    border: 1px solid #1abc9c;
 }
 
 aside h2 {
@@ -108,45 +111,115 @@ aside h2 {
 }
 
 aside li {
-    border: 1px solid black;
     list-style: none;
     padding: 10px;
 }
 
 aside a {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-decoration: none;
+    color: #fff;
 
+}
+
+aside a:hover {
+    color: black;
 }
 
 .sidebar-home {
     margin-bottom: 40%;
+    border-bottom: 1px solid black;
 }
 
 .categorie {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-bottom: 1px solid black;
     margin-bottom: 15%;
 }
 
-
-
-
-section {
-
-    background-color: rebeccapurple;
-    width: 100%;
-    height: 100vh;
-
-    grid-area: section;
+.sous-categorie li {
+    box-shadow: 1px 1px 6px black;
+    margin: 10% 0%;
+    border-radius: 10px;
+    border: 1px solid black;
+    text-align: center;
 }
+
+.sous-categorie li:hover {
+    box-shadow: none;
+}
+
+/* Display grid pour les éléments a l'interieur de la section */
+section {
+    width: 100%;
+    min-height: 100vh;
+    grid-area: section;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr 4fr 4fr;
+    grid-template-areas:
+        "titre titre"
+        "promo promo"
+        "note plus"
+    ;
+    justify-items: center;
+    align-items: center;
+    background-color: #f8c291;
+}
+
+.section-titre {
+    grid-area: titre;
+    font-size: 2rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.section-promo {
+    font-size: 1.3rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    grid-area: promo;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-note {
+    font-size: 1.3rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    grid-area: note;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-plus {
+    font-size: 1.3rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    grid-area: plus;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section img {
+    margin: 10% 0%;
+    border: 1px solid #e58e26;
+    border-radius: 40px;
+    width: 300px;
+    height: 300px;
+}
+
 
 /* donne le nom pour le body et on display grid pour arranger les éléments a l'interieur */
 footer {
     grid-area: footer;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 8fr 1fr;
+    grid-template-rows: 8fr 0.5fr 1fr;
     grid-template-areas:
         "footer-address footer-nav-links footer-nav-help footer-news-letter"
-        "footer-end footer-end footer-end footer-end";
+        "footer-border footer-border footer-border footer-border"
+        "footer-end footer-end footer-end footer-end"
+    ;
 }
 
 /* Nommage du logo et de l'adresse et décoration */
@@ -171,6 +244,7 @@ footer {
 
 /* Nommage de la navbar de liens dans le footer et décoration */
 .footer-nav-links {
+    margin-left: 40%;
     grid-area: footer-nav-links;
     display: flex;
     flex-direction: column;
@@ -249,21 +323,25 @@ footer {
     border-bottom: 1px solid #bdc3c7;
 }
 
+.footer-input-mail::placeholder {
+    color: #ecf0f181;
+}
+
 .footer-input-mail:focus {
     padding: 0 3%;
     outline: none;
     color: #ecf0f1;
     border: none;
     border-bottom: 1px solid #bdc3c7;
+
 }
 
 .footer-input-submit {
     margin-left: 2%;
     padding: 1px 5px;
-    color: #bdc3c7;
+    color: #ecf0f1;
     border-radius: 5px;
     background-color: #3498db;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     border: none;
     border-right: 3px solid #206999;
     border-bottom: 4px solid #206999;
@@ -286,10 +364,147 @@ footer {
 
 
 /* Les copyrights qui sont en toute fn de page */
+.footer-border {
+    border-top: 1px solid black;
+    grid-area: footer-border;
+}
+
 .footer-end {
     margin: 1%;
-    border-top: 1px solid black;
     grid-area: footer-end;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #ecf0f1;
+}
+
+@media screen and (max-width : 1500px) {
+    section {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 4fr 4fr 4fr;
+        grid-template-areas:
+            "titre"
+            "promo"
+            "note"
+            "plus"
+        ;
+    }
+
+
+}
+
+@media screen and (max-width: 750px) {
+    .article-image {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .section-titre {
+        font-size: 1.3rem;
+    }
+
+    .section-promo,
+    .section-note,
+    .section-plus {
+        font-size: .8rem;
+    }
+
+    section img {
+        width: 250px;
+        height: 250px;
+    }
+
+    body {
+        grid-template-columns: 1fr 3fr;
+    }
+
+    footer {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 4fr 4fr 0.5fr 1fr;
+        grid-template-areas:
+            "footer-address footer-nav-links footer-news-letter"
+            "footer-address footer-nav-help footer-news-letter"
+            "footer-border footer-border footer-border "
+            "footer-end footer-end footer-end "
+        ;
+    }
+
+    .footer-nav-links {
+        margin: 0%;
+        justify-self: center;
+    }
+
+    .footer-nav-help {
+        justify-self: center;
+    }
+}
+
+@media screen and (max-width: 625px) {
+    footer {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 5fr 5fr 5fr 0.5fr 1fr;
+        grid-template-areas:
+            "footer-address"
+            "footer-nav-links"
+            "footer-nav-help"
+            "footer-news-letter"
+            "footer-border"
+            "footer-end"
+        ;
+        justify-items: center;
+        align-items: center;
+    }
+
+    .footer-address {
+        width: 100%;
+    }
+
+    .footer-nav-links {
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer-nav-help {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    header {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas:
+            "logo"
+            "nav"
+            "connect";
+        justify-items: center;
+        align-items: center;
+    }
+
+    body {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr 10fr auto;
+        grid-template-areas:
+            "header"
+            "sidebar"
+            "section"
+            "footer"
+        ;
+    }
+
+    section {
+        height: 100%;
+    }
+
+    aside h2 {
+        margin: 1%;
+    }
+
+    aside {
+        margin: 0%;
+
+    }
+
+    .footer-border {
+        display: none;
+    }
 }
